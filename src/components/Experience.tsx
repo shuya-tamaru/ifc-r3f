@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import useModelLoading from "../hooks/useModelLoading";
 import useRaycaster from "../hooks/useRaycaster";
 
@@ -8,7 +8,7 @@ const Experience = () => {
 
   return (
     <>
-      <ambientLight />
+      <ambientLight intensity={0.5} />
       <OrbitControls makeDefault />
     </>
   );

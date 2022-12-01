@@ -7,7 +7,7 @@ const useModelLoading = () => {
   const ifcLoader = useIfcLoader();
 
   useEffect(() => {
-    ifcLoader.load("/test.ifc", (ifcModel) => {
+    ifcLoader.load("/sample-model.ifc", (ifcModel) => {
       scene.add(ifcModel);
     });
   }, []);

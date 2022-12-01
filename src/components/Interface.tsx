@@ -28,7 +28,7 @@ const idDisplayStyle = {
   marginLeft: "5px",
   lineHeight: "40px",
   padding: "0 5px 0 5px",
-  background: "rgba(255, 255, 255, 0.7)",
+  background: "rgba(255, 255, 255, 0.8)",
   textAlign: "center",
   position: "absolute",
 };
@@ -42,7 +42,7 @@ const barContainerStyle = {
 };
 
 const loadingBarStyle = {
-  top: "55%",
+  top: "50%",
   width: "100vw",
   height: "2px",
   position: "absolute",
@@ -57,5 +57,5 @@ const loadingTextStyle = {
   fontSize: "20px",
   textAlign: "center",
   position: "absolute",
-  top: "50%",
+  top: "45%",
 };

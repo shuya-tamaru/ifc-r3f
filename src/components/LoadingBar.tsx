@@ -1,10 +1,12 @@
+import { useState } from "react";
 import * as THREE from "three";
+
+import { useThree } from "@react-three/fiber";
 import { ParserProgress } from "web-ifc-three/IFC/components/IFCParser";
 import { gsap } from "gsap";
 
 import useIfcLoader from "../hooks/useIfcLoader";
 import useLoadingState from "./stores/useLoadingState";
-import { useState } from "react";
 
 const overlayGeometry = new THREE.PlaneGeometry(300, 300, 1, 1);
 const overlayMaterial = new THREE.ShaderMaterial({
@@ -40,6 +42,8 @@ const overlayMaterial = new THREE.ShaderMaterial({
 });
 
 const LoadingBar = () => {
+  const { gl } = useThree();
+  const canvas = gl.domElement;
   const [removeOverray, setRemoveOverray] = useState(false);
   const { setLoaded } = useLoadingState((state) => state);
   const ifcLoader = useIfcLoader();
@@ -50,8 +54,10 @@ const LoadingBar = () => {
   const handleLoading = () => {
     setLoaded(true);
     if (loadingText && loadingBar && barContainer) {
-      loadingText.innerHTML = "Go to Model";
+      loadingText.innerHTML = "Go to Model !!";
       loadingText.style.cursor = "pointer";
+      canvas.style.background =
+        "linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)";
       loadingText.addEventListener("click", () => {
         gsap.to(overlayMaterial.uniforms.uAlpha, { duration: 1, value: 0 });
         barContainer.style.display = "none";
@@ -72,7 +78,8 @@ const LoadingBar = () => {
     <mesh
       geometry={overlayGeometry}
       material={overlayMaterial}
-      position={[0, 0, 10]}
+      position={[0, 0, 14]}
+      rotation-y={Math.PI * 0.25}
       name="overray"
       dispose={null}
     />
